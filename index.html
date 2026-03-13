@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Process of Pain, Product of Purpose Countdown</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background-image:"https://github.com/Lindley504/Countdowncamp/blob/main/PASS_CAM_POS.png"("PASS_CAM_POS.png");
+    background-size:cover;
+    background-position:center;
+}
+
+.overlay{
+    background:rgba(0,0,0,0.6);
+    padding:40px;
+    border-radius:10px;
+}
+
+#countdown{
+    font-size:70px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+<h1>The Event Begins In</h1>
+<div id="countdown"></div>
+</div>
+
+<script>
+
+var countDownDate = new Date("Mar 29, 2026 09:00:00").getTime();
+
+var x = setInterval(function() {
+
+var now = new Date().getTime();
+var distance = countDownDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("countdown").innerHTML =
+days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+if (distance < 0) {
+clearInterval(x);
+document.getElementById("countdown").innerHTML = "It Has Started!";
+}
+
+}, 1000);
+
+</script>
+
+</body>
+</html>
