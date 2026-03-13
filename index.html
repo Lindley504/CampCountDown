@@ -16,20 +16,44 @@ body{
     align-items:center;
     text-align:center;
 
-    background-image:url("https://github.com/Lindley504/CampCountDown/blob/main/PASS_CAM_POS.png");
+    background-image:url("https://raw.githubusercontent.com/Lindley504/CampCountDown/main/PASS_CAM_POS.png");
     background-size:cover;
     background-position:center;
 }
 
 .overlay{
-    background:rgba(0,0,0,0.6);
-    padding:40px;
-    border-radius:10px;
+    background:rgba(0,0,0,0.65);
+    padding:50px;
+    border-radius:12px;
 }
 
-#countdown{
+h1{
+    margin-bottom:40px;
+    font-size:36px;
+}
+
+.countdown-container{
+    display:flex;
+    gap:25px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.time-box{
+    background:rgba(255,255,255,0.1);
+    padding:25px 35px;
+    border-radius:10px;
+    min-width:120px;
+}
+
+.number{
     font-size:70px;
     font-weight:bold;
+}
+
+.label{
+    font-size:18px;
+    margin-top:5px;
 }
 
 </style>
@@ -38,8 +62,33 @@ body{
 <body>
 
 <div class="overlay">
+
 <h1>Process of Pain, Product of Purpose Campaign Begins In</h1>
-<div id="countdown"></div>
+
+<div class="countdown-container">
+
+<div class="time-box">
+<div id="days" class="number">0</div>
+<div class="label">Days</div>
+</div>
+
+<div class="time-box">
+<div id="hours" class="number">0</div>
+<div class="label">Hours</div>
+</div>
+
+<div class="time-box">
+<div id="minutes" class="number">0</div>
+<div class="label">Minutes</div>
+</div>
+
+<div class="time-box">
+<div id="seconds" class="number">0</div>
+<div class="label">Seconds</div>
+</div>
+
+</div>
+
 </div>
 
 <script>
@@ -56,12 +105,14 @@ var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-document.getElementById("countdown").innerHTML =
-days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
 
 if (distance < 0) {
 clearInterval(x);
-document.getElementById("countdown").innerHTML = "It Has Started!";
+document.querySelector(".countdown-container").innerHTML = "<h2>It Has Begun!</h2>";
 }
 
 }, 1000);
@@ -69,5 +120,4 @@ document.getElementById("countdown").innerHTML = "It Has Started!";
 </script>
 
 </body>
-
 </html>
